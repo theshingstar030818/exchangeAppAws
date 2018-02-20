@@ -1,0 +1,23 @@
+{
+	"ProjectName": "exchangeApp",
+	"ProjectPath": "/Volumes/SSD 1.5TB/Development/exchangeApp",
+	"SourceDir": "src",
+	"DistributionDir": "www",
+	"BuildCommand": "npm run-script build",
+	"StartCommand": "ionic serve",
+	"InitializationTime": "2018-02-19-20-34-27",
+	"LastConfigurationTime": "2018-02-19-20-35-28",
+	"LastNPMInstallTime": "",
+	"FrontendLastBuildTime": "",
+	"LastPublishTime": "",
+	"BackendFormat": "yml",
+	"BackendLastSyncTime": "2018-02-19-21-14-11",
+	"BackendLastBuildTime": "2018-02-19-21-14-01",
+	"BackendLastPushTime": "2018-02-19-21-14-06",
+	"BackendLastPushSuccessful": true,
+	"BackendProjectID": "586fb998-15de-11e8-b983-1df4d428e0df",
+	"BackendProjectName": "exchangeApp-2018-02-19-20-35-28",
+	"BackendProjectConsoleUrl": "https://console.aws.amazon.com/mobilehub/home#/586fb998-15de-11e8-b983-1df4d428e0df/build",
+	"BackendProjectCreationTime": "2018-02-20T01:35:34.690Z",
+	"BackendProjectLastUpdatedTime": "2018-02-20T02:14:05.403Z"
+}
