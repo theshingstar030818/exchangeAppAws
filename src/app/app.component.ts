@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Events, MenuController, Nav, Platform, ModalController } from 'ionic-angular';
+import { Events, MenuController, Nav, Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -37,7 +37,7 @@ export class MyApp {
 
   loggedInPages: PageInterface[] = [
     { title: 'Tasks', name: 'TabsPage', component: 'TabsPage', tabComponent: 'TasksPage', icon: 'ios-calendar-outline', customIcon: false },
-    { title: 'Exchange', name: 'ExchangePage', component: 'ExchangePage', icon: 'ios-trending-up-outline', customIcon: false },
+    { title: 'Exchange', name: 'ExchangeTabsPage', component: 'ExchangeTabsPage', tabComponent: 'ExchangePage', icon: 'ios-trending-up-outline', customIcon: false },
     { title: 'Account', name: 'AccountPage', component: 'AccountPage', icon: 'person' },
     { title: 'Support', name: 'SupportPage', component: 'SupportPage', icon: 'help' },
     { title: 'Logout', name: 'LoginPage', component: 'LoginPage', icon: 'log-out', logsOut: true }
@@ -151,10 +151,10 @@ export class MyApp {
 
   isActive(page: PageInterface) {
     let childNav = this.nav.getActiveChildNavs()[0];
-
+    
     // Tabs are a special case because they have their own navigation
     if (childNav) {
-      if (childNav.getSelected() && childNav.getSelected().root === page.tabComponent) {
+      if (childNav.getSelected() && childNav.getSelected().parent._elementRef.nativeElement.id === page.component) {
         return 'primary';
       }
       return;
