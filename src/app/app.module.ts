@@ -2,7 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
-
+import { IonicStorageModule } from '@ionic/storage';
 import { Camera } from '@ionic-native/camera';
 
 import { MyApp } from './app.component';
@@ -24,6 +24,7 @@ Amplify.configure(aws_exports);
   imports: [
     BrowserModule,
     HttpModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

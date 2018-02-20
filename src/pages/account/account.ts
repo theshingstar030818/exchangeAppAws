@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { LoadingController, NavController, IonicPage } from 'ionic-angular';
+import { App, LoadingController, NavController, IonicPage, Events } from 'ionic-angular';
 import { Auth, Storage, Logger } from 'aws-amplify';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -22,9 +22,13 @@ export class AccountPage {
   public username: string;
   public attributes: any;
 
-  constructor(public navCtrl: NavController,
-              public camera: Camera,
-              public loadingCtrl: LoadingController) {
+  constructor(
+    public navCtrl: NavController,
+    public camera: Camera,
+    public loadingCtrl: LoadingController,
+    public app: App,
+    public events: Events
+  ) {
     this.attributes = [];
     this.avatarPhoto = null;
     this.selectedPhoto = null;
@@ -38,6 +42,21 @@ export class AccountPage {
         if (info['phone_number']) { this.attributes.push({ name: 'phone_number', value: info['phone_number']}); }
         this.refreshAvatar();
       });
+  }
+
+  changePassword() {
+    console.log('Clicked to change password');
+  }
+
+  logout() {
+    Auth.signOut().then(() => { 
+      this.navCtrl.setRoot('LoginPage');
+      this.events.publish('user:logout');
+    });
+  }
+
+  support() {
+    this.navCtrl.setRoot('SupportPage');
   }
 
   refreshAvatar() {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-
-import { NavController, LoadingController, IonicPage } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { NavController, LoadingController, IonicPage, Events } from 'ionic-angular';
 import { Auth, Logger } from 'aws-amplify';
 
 const logger = new Logger('Login');
@@ -16,11 +16,15 @@ export class LoginDetails {
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  
+
   public loginDetails: LoginDetails;
 
-  constructor(public navCtrl: NavController,
-              public loadingCtrl: LoadingController) {
+  constructor(
+    public navCtrl: NavController,
+    public loadingCtrl: LoadingController,
+    public events: Events,
+    public storage: Storage,
+  ) {
     this.loginDetails = new LoginDetails(); 
   }
 
@@ -38,6 +42,7 @@ export class LoginPage {
         if (user.challengeName === 'SMS_MFA') {
           this.navCtrl.push('ConfirmSignInPage', { 'user': user });
         } else {
+          this.events.publish('user:login');
           this.navCtrl.setRoot('TabsPage');
         }
       })
@@ -46,7 +51,7 @@ export class LoginPage {
   }
 
   signup() {
-    this.navCtrl.push('SignupPage');
+    this.navCtrl.setRoot('SignupPage');
   }
 
 }

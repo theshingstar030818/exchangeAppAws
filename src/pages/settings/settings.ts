@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { App } from 'ionic-angular';
+import { App, Events } from 'ionic-angular';
 import { Auth } from 'aws-amplify';
 import { IonicPage } from 'ionic-angular';
 
@@ -12,12 +12,17 @@ export class SettingsPage {
   public aboutPage = 'AboutPage';
   public accountPage = 'AccountPage';
 
-  constructor(public app: App) {
+  constructor(
+    public app: App,
+    public events: Events
+  ) {
   }
 
   logout() {
-    Auth.signOut()
-      .then(() => this.app.getRootNav().setRoot('LoginPage'));
+    Auth.signOut().then(() => {
+      this.events.publish('user:logout');
+      this.app.getRootNav().setRoot('LoginPage');
+    });
   }
 
 }
