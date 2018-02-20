@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-
+import { IonicPage } from 'ionic-angular';
 import { NavController, ModalController } from 'ionic-angular';
 import { Auth, Logger } from 'aws-amplify';
 
-import { TasksCreatePage } from '../tasks-create/tasks-create';
 const aws_exports = require('../../aws-exports').default;
 
 import { DynamoDB } from '../../providers/providers';
 
 const logger = new Logger('Tasks');
-
+@IonicPage()
 @Component({
   selector: 'page-tasks',
   templateUrl: 'tasks.html'
@@ -68,7 +67,7 @@ export class TasksPage {
 
   addTask() {
     let id = this.generateId();
-    let addModal = this.modalCtrl.create(TasksCreatePage, { 'id': id });
+    let addModal = this.modalCtrl.create('TasksCreatePage', { 'id': id });
     addModal.onDidDismiss(item => {
       if (!item) { return; }
       item.userId = this.userId;

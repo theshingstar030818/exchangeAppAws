@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, IonicPage } from 'ionic-angular';
 import { Auth, Logger } from 'aws-amplify';
-
-import { TabsPage } from '../tabs/tabs';
-import { SignupPage } from '../signup/signup';
-import { ConfirmSignInPage } from '../confirmSignIn/confirmSignIn';
 
 const logger = new Logger('Login');
 
@@ -14,6 +10,7 @@ export class LoginDetails {
   password: string;
 }
 
+@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -39,9 +36,9 @@ export class LoginPage {
       .then(user => {
         logger.debug('signed in user', user);
         if (user.challengeName === 'SMS_MFA') {
-          this.navCtrl.push(ConfirmSignInPage, { 'user': user });
+          this.navCtrl.push('ConfirmSignInPage', { 'user': user });
         } else {
-          this.navCtrl.setRoot(TabsPage);
+          this.navCtrl.setRoot('TabsPage');
         }
       })
       .catch(err => logger.debug('errrror', err))
@@ -49,7 +46,7 @@ export class LoginPage {
   }
 
   signup() {
-    this.navCtrl.push(SignupPage);
+    this.navCtrl.push('SignupPage');
   }
 
 }

@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-
+import { IonicPage } from 'ionic-angular';
 import { NavController, LoadingController } from 'ionic-angular';
 import { Auth, Logger } from 'aws-amplify';
-
-import { LoginPage } from '../login/login';
-import { ConfirmSignUpPage } from '../confirmSignUp/confirmSignUp';
 
 const logger = new Logger('SignUp');
 
@@ -15,6 +12,7 @@ export class UserDetails {
     password: string;
 }
 
+@IonicPage()
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html'
@@ -42,14 +40,14 @@ export class SignupPage {
     logger.debug('register');
     Auth.signUp(details.username, details.password, details.email, details.phone_number)
       .then(user => {
-        this.navCtrl.push(ConfirmSignUpPage, { username: details.username });
+        this.navCtrl.push('ConfirmSignUpPage', { username: details.username });
       })
       .catch(err => { this.error = err; })
       .then(() => loading.dismiss());
   }
 
   login() {
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.push('LoginPage');
   }
 
 }

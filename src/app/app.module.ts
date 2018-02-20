@@ -1,20 +1,11 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { HttpModule } from '@angular/http';
 
 import { Camera } from '@ionic-native/camera';
 
 import { MyApp } from './app.component';
-import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
-import { ConfirmSignInPage } from '../pages/confirmSignIn/confirmSignIn';
-import { ConfirmSignUpPage } from '../pages/confirmSignUp/confirmSignUp';
-import { SettingsPage } from '../pages/settings/settings';
-import { AboutPage } from '../pages/about/about';
-import { AccountPage } from '../pages/account/account';
-import { TabsPage } from '../pages/tabs/tabs';
-import { TasksPage } from '../pages/tasks/tasks';
-import { TasksCreatePage } from '../pages/tasks-create/tasks-create';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -28,35 +19,16 @@ Amplify.configure(aws_exports);
 
 @NgModule({
   declarations: [
-    MyApp,
-    LoginPage,
-    SignupPage,
-    ConfirmSignInPage,
-    ConfirmSignUpPage,
-    SettingsPage,
-    AboutPage,
-    AccountPage,
-    TabsPage,
-    TasksPage,
-    TasksCreatePage
+    MyApp
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage,
-    SignupPage,
-    ConfirmSignInPage,
-    ConfirmSignUpPage,
-    SettingsPage,
-    AboutPage,
-    AccountPage,
-    TabsPage,
-    TasksPage,
-    TasksCreatePage
   ],
   providers: [
     StatusBar,
