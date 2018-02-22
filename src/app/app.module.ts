@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { Camera } from '@ionic-native/camera';
 
@@ -13,6 +14,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { DynamoDB } from '../providers/aws.dynamodb';
 
 import Amplify from 'aws-amplify';
+import { CoinMarketCapProvider } from '../providers/coin-market-cap/coin-market-cap';
+import { CoinIconsProvider } from '../providers/coin-icons/coin-icons';
 const aws_exports = require('../aws-exports').default;
 
 Amplify.configure(aws_exports);
@@ -24,6 +27,7 @@ Amplify.configure(aws_exports);
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
@@ -36,7 +40,9 @@ Amplify.configure(aws_exports);
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
-    DynamoDB
+    DynamoDB,
+    CoinMarketCapProvider,
+    CoinIconsProvider
   ]
 })
 export class AppModule {}
