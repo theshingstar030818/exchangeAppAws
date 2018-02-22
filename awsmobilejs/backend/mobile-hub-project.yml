@@ -32,10 +32,10 @@ features:
             tablePrivacy: public
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
-              added: N
               ask: S
               bid: S
-              change: S
+              change: N
+              created: N
               high24hr: S
               icon: S
               isActive: BOOL
@@ -56,6 +56,12 @@ features:
                 hashKeyType: S
                 indexName: VolumeSorted
                 rangeKeyName: volume
+                rangeKeyType: N
+              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
+                hashKeyName: marketId
+                hashKeyType: S
+                indexName: ChangeSorted
+                rangeKeyName: change
                 rangeKeyType: N
             rangeKeyName: name
             rangeKeyType: S

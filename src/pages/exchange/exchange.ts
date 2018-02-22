@@ -14,6 +14,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'exchange.html',
 })
 export class ExchangePage {
+  
+  banner = [{},{},{}];
+  markets = [{
+    name: 'BTC',
+    vol: 134.958,
+    lastPrice: 100043.78
+  },{
+    name: 'ADA',
+    vol: 2242.900,
+    lastPrice: 43.78
+  }];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -22,4 +33,8 @@ export class ExchangePage {
     console.log('ionViewDidLoad ExchangePage');
   }
 
+  viewMarket(market){
+    console.log(market);
+    this.navCtrl.push('MarketTradePage',market);
+  }
 }

@@ -19,6 +19,86 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-card>  
+    <ion-card-content>
+      <ion-slides [autoplay]=2000 [loop]=true >
+        <ion-slide>
+          <h2>Top Volume</h2>
+          <ion-item>
+            <ion-thumbnail item-start>
+              <img src="https://www.cryptocompare.com/media/12318177/ada.png">
+            </ion-thumbnail>
+            <h2>Cardano (ADA)</h2>
+            <p>Last Price: 0.00003699 (-3.6%)</p>
+            <p>24hr Volume: 2242.900</p>
+          </ion-item>
+        </ion-slide>
+        <ion-slide>
+          <h2>Top % Gain</h2>
+          <ion-item>
+            <ion-thumbnail item-start>
+              <img src="https://www.cryptocompare.com/media/20646/eth_logo.png">
+            </ion-thumbnail>
+            <h2>Ethereum (ETH)</h2>
+            <p>Last Price: 0.00003699 (+20.9%)</p>
+            <p>24hr Volume: 2242.900</p>
+          </ion-item>
+        </ion-slide>
+        <ion-slide>
+          <h2>Top Gain</h2>
+          <ion-item>
+            <ion-thumbnail item-start>
+              <img src="https://www.cryptocompare.com/media/12318206/flash.png">
+            </ion-thumbnail>
+            <h2>Flash (Flash)</h2>
+            <p>Last Price: 0.00003699 (+20.9%)</p>
+            <p>24hr Volume: 2242.900</p>
+          </ion-item>
+        </ion-slide>
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>
 
+  <ion-card>
+
+    <ion-card-header>
+      PKR Markets
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <ion-list-header>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <div>Market</div>
+              </ion-col>
+              <ion-col>
+                <div>Vol.</div>
+              </ion-col>
+              <ion-col>
+                <div>Price</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-list-header>
+        <button ion-item *ngFor="let market of markets" (click)="viewMarket(market)">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <p>{{market.name}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{market.vol}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{market.lastPrice}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </button>  
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
