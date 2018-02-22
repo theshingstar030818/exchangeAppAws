@@ -32,6 +32,37 @@ features:
             tablePrivacy: public
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
+              added: N
+              ask: S
+              bid: S
+              change: S
+              high24hr: S
+              icon: S
+              isActive: BOOL
+              lastPrice: N
+              low24hr: S
+              marketId: S
+              name: S
+              nameCode: S
+              primaryCurrency: S
+              secondaryCurrency: S
+              spread: S
+              volume: N
+            hashKeyName: marketId
+            hashKeyType: S
+            indexes:
+              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
+                hashKeyName: marketId
+                hashKeyType: S
+                indexName: VolumeSorted
+                rangeKeyName: volume
+                rangeKeyType: N
+            rangeKeyName: name
+            rangeKeyType: S
+            tableName: ___DYNAMIC_PREFIX___-markets
+            tablePrivacy: public
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
               email: S
               personId: S
               personName: S
