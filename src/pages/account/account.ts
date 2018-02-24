@@ -55,10 +55,6 @@ export class AccountPage {
     });
   }
 
-  support() {
-    this.navCtrl.setRoot('SupportPage');
-  }
-
   refreshAvatar() {
     Storage.get(this.userId + '/avatar')
       .then(url => this.avatarPhoto = url);

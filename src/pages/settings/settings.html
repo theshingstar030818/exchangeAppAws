@@ -14,6 +14,12 @@
 
 <ion-content>
     <ion-list>
+      <ion-item>
+        <ion-label>Currency</ion-label>
+        <ion-select [(ngModel)]="currency">
+          <ion-option value="pkr">PKR</ion-option>
+        </ion-select>
+      </ion-item>
       <button ion-item [navPush]="aboutPage">
         About this app
       </button>

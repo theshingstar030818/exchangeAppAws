@@ -36,10 +36,11 @@ export class MyApp {
   ];
 
   loggedInPages: PageInterface[] = [
-    { title: 'Tasks', name: 'TabsPage', component: 'TabsPage', tabComponent: 'TasksPage', icon: 'ios-calendar-outline', customIcon: false },
+    // { title: 'Tasks', name: 'TabsPage', component: 'TabsPage', tabComponent: 'TasksPage', icon: 'ios-calendar-outline', customIcon: false },
     { title: 'Exchange', name: 'ExchangeTabsPage', component: 'ExchangeTabsPage', tabComponent: 'ExchangePage', icon: 'ios-trending-up-outline', customIcon: false },
-    { title: 'Account', name: 'AccountPage', component: 'AccountPage', icon: 'person' },
+    { title: 'Account', name: 'AccountPage', component: 'AccountPage', icon: 'person' },    
     { title: 'Support', name: 'SupportPage', component: 'SupportPage', icon: 'help' },
+    { title: 'Settings', name: 'SettingsPage', component: 'SettingsPage', icon: 'cog' },
     { title: 'Logout', name: 'LoginPage', component: 'LoginPage', icon: 'log-out', logsOut: true }
   ];
   
@@ -79,7 +80,7 @@ export class MyApp {
           .then(() => {
             this.storage.set(this.HAS_LOGGED_IN, true);
             this.enableMenu(true);
-            this.rootPage = 'TabsPage'; 
+            this.rootPage = 'ExchangeTabsPage'; 
           }).catch(() => { 
             this.storage.set(this.HAS_LOGGED_IN, false);
             this.enableMenu(false);

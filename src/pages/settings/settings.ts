@@ -11,7 +11,8 @@ export class SettingsPage {
 
   public aboutPage = 'AboutPage';
   public accountPage = 'AccountPage';
-
+  public currency = 'pkr';
+  
   constructor(
     public app: App,
     public events: Events

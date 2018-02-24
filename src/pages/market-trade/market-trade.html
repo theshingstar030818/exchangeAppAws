@@ -15,80 +15,165 @@
 
 
 <ion-content padding>
+
   <ion-card>
     <ion-item>
-      Buy Orders
-      <button ion-button clear icon-only item-end (click)="addOrder('buy')">
-        <ion-icon name="ios-add-outline"></ion-icon>
-      </button>
+      <ion-avatar item-start>
+        <img src="{{market.icon}}">
+      </ion-avatar>
+      <h2>{{market.marketId}}</h2>
+      <p>Last: {{market.lastPrice}} {{market.secondaryCurrency}}</p>
+      <p>Vol: {{market.secondaryCurrency}} {{market.volume}}</p>
     </ion-item>
-    <ion-card-content>
-      <table>
-        <tr>
-          <th>Price PKR</th>
-          <th>Amount {{market?.name}}</th>
-          <th>Value PKR</th>
-        </tr>
-        <tr>
-          <td>14,150.56CAD	</td>
-          <td>23.010477</td>
-          <td>148.26</td>
-        </tr>
-        <tr>
-          <td>14,150.56	</td>
-          <td>0.01047751</td>
-          <td>148.26</td>
-        </tr>
-        <tr>
-          <td>14,150.56CAD	</td>
-          <td>23.010477</td>
-          <td>148.26</td>
-        </tr>
-        <tr>
-          <td>14,150.56	</td>
-          <td>0.01047751</td>
-          <td>148.26</td>
-        </tr>
-      </table>
-    </ion-card-content> 
-     
+  
+    <ion-card-content text-center>
+      <canvas #lineCanvas></canvas>     
+      <ion-row>
+        <ion-col>
+          <p>High: <br>{{market.secondaryCurrency}} {{market.high24hr}}</p>
+        </ion-col>
+        <ion-col>
+          <p>Ask: <br>{{market.secondaryCurrency}} {{market.ask}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p>Low: <br>{{market.secondaryCurrency}} {{market.low24hr}}</p>
+        </ion-col>
+        <ion-col>
+          <p>Bid: <br>{{market.secondaryCurrency}} {{market.bid}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  
+    <div padding>
+      <ion-segment [(ngModel)]="activeSegment">
+        <!-- <ion-segment-button value="trendChart">
+          <ion-icon name="md-analytics"></ion-icon>
+        </ion-segment-button> -->
+        <ion-segment-button value="buySell">
+          Buy/Sell
+        </ion-segment-button>
+        <ion-segment-button value="orderBook">
+          Order Book
+        </ion-segment-button>
+      </ion-segment>
+    </div>
   </ion-card>
-  <ion-card>
-    <ion-item>
-      Sell Orders
-      <button ion-button clear icon-only item-end (click)="addOrder('sell')">
-        <ion-icon name="ios-add-outline"></ion-icon>
-      </button>
-    </ion-item>
-    <ion-card-content>
-      <table>
-        <tr>
-          <th>Price PKR</th>
-          <th>Amount {{market?.name}}</th>
-          <th>Value PKR</th>
-        </tr>
-        <tr>
-          <td>14,150.56CAD	</td>
-          <td>23.010477</td>
-          <td>148.26</td>
-        </tr>
-        <tr>
-          <td>14,150.56	</td>
-          <td>0.01047751</td>
-          <td>148.26</td>
-        </tr>
-        <tr>
-          <td>14,150.56CAD	</td>
-          <td>23.010477</td>
-          <td>148.26</td>
-        </tr>
-        <tr>
-          <td>14,150.56	</td>
-          <td>0.01047751</td>
-          <td>148.26</td>
-        </tr>
-      </table>
-    </ion-card-content> 
-      
-  </ion-card>
+
+  <div [ngSwitch]="activeSegment">
+
+    <ion-list *ngSwitchCase="'buySell'">
+      <ion-card>
+        <ion-item>
+          Buy {{market.primaryCurrency}}
+          <ion-note item-end>3281.25 {{market.secondaryCurrency}} AVAILABLE </ion-note>
+        </ion-item>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label fixed>Units</ion-label>
+              <ion-input type="number" value="0.00000000"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label fixed>Bid</ion-label>
+              <ion-input type="number" value="0.00000000"></ion-input>
+            </ion-item>
+            <ion-item text-wrap>
+              <ion-label>Type</ion-label>
+              <ion-select [(ngModel)]="orderType">
+                <ion-option value="gtc">Good 'Till Cancelled</ion-option>
+                <ion-option value="ioc">Immediate or Cancel</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label fixed>Total</ion-label>
+              <ion-input type="number" value="0.00000000"></ion-input>
+            </ion-item>
+            <p>The minimum order size is 1000 {{market?.secondaryCurrency}}</p>
+
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  
+    <ion-list *ngSwitchCase="'orderBook'">
+      <ion-card>
+        <ion-item>
+          Buy Orders
+          <button ion-button clear icon-only item-end (click)="addOrder('buy')">
+            <ion-icon name="ios-add-outline"></ion-icon>
+          </button>
+        </ion-item>
+        <ion-card-content>
+          <table>
+            <tr>
+              <th>Price PKR</th>
+              <th>Amount {{market?.primaryCurrency}}</th>
+              <th>Value PKR</th>
+            </tr>
+            <tr>
+              <td>14,150.56CAD	</td>
+              <td>23.010477</td>
+              <td>148.26</td>
+            </tr>
+            <tr>
+              <td>14,150.56	</td>
+              <td>0.01047751</td>
+              <td>148.26</td>
+            </tr>
+            <tr>
+              <td>14,150.56CAD	</td>
+              <td>23.010477</td>
+              <td>148.26</td>
+            </tr>
+            <tr>
+              <td>14,150.56	</td>
+              <td>0.01047751</td>
+              <td>148.26</td>
+            </tr>
+          </table>
+        </ion-card-content> 
+          
+      </ion-card>
+      <ion-card>
+        <ion-item>
+          Sell Orders
+          <button ion-button clear icon-only item-end (click)="addOrder('sell')">
+            <ion-icon name="ios-add-outline"></ion-icon>
+          </button>
+        </ion-item>
+        <ion-card-content>
+          <table>
+            <tr>
+              <th>Price PKR</th>
+              <th>Amount {{market?.primaryCurrency}}</th>
+              <th>Value PKR</th>
+            </tr>
+            <tr>
+              <td>14,150.56CAD	</td>
+              <td>23.010477</td>
+              <td>148.26</td>
+            </tr>
+            <tr>
+              <td>14,150.56	</td>
+              <td>0.01047751</td>
+              <td>148.26</td>
+            </tr>
+            <tr>
+              <td>14,150.56CAD	</td>
+              <td>23.010477</td>
+              <td>148.26</td>
+            </tr>
+            <tr>
+              <td>14,150.56	</td>
+              <td>0.01047751</td>
+              <td>148.26</td>
+            </tr>
+          </table>
+        </ion-card-content> 
+          
+      </ion-card>
+    </ion-list>
+  </div>  
 </ion-content>

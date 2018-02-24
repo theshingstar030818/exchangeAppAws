@@ -30,8 +30,9 @@
         <strong>{{ attr.getName() }}</strong> {{ attr.getValue() }}
       </ion-item>
       <button ion-item (click)="changePassword()">Change Password</button>
-      <button ion-item (click)="support()">Support</button>
-      <button ion-item (click)="logout()">Logout</button>
+      <button ion-item (click)="logout()">
+        <ion-label color="danger">Logout</ion-label>
+      </button>
     </ion-list>
   </div>
 
