@@ -1,6 +1,6 @@
 {
 	"ProjectName": "exchangeApp",
-	"ProjectPath": "/Volumes/SSD 1.5TB/Development/exchangeApp",
+	"ProjectPath": "/Volumes/SSD 1.5TB/Development/exchangeAppAws",
 	"SourceDir": "src",
 	"DistributionDir": "www",
 	"BuildCommand": "npm run-script build",
@@ -11,13 +11,13 @@
 	"FrontendLastBuildTime": "",
 	"LastPublishTime": "",
 	"BackendFormat": "yml",
-	"BackendLastSyncTime": "2018-02-21-23-33-40",
-	"BackendLastBuildTime": "2018-02-21-23-11-25",
-	"BackendLastPushTime": "2018-02-21-23-11-31",
+	"BackendLastSyncTime": "2018-02-24-20-09-02",
+	"BackendLastBuildTime": "2018-02-24-20-08-52",
+	"BackendLastPushTime": "2018-02-24-20-08-56",
 	"BackendLastPushSuccessful": true,
 	"BackendProjectID": "586fb998-15de-11e8-b983-1df4d428e0df",
 	"BackendProjectName": "exchangeApp-2018-02-19-20-35-28",
 	"BackendProjectConsoleUrl": "https://console.aws.amazon.com/mobilehub/home#/586fb998-15de-11e8-b983-1df4d428e0df/build",
 	"BackendProjectCreationTime": "2018-02-20T01:35:34.690Z",
-	"BackendProjectLastUpdatedTime": "2018-02-22T04:33:13.889Z"
+	"BackendProjectLastUpdatedTime": "2018-02-25T01:08:56.797Z"
 }

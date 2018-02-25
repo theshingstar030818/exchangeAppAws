@@ -20,5 +20,32 @@
 
 
 <ion-content padding>
-
+  <div padding>
+    <ion-segment [(ngModel)]="ordersSegment">
+      <ion-segment-button value="open">
+        Open
+      </ion-segment-button>
+      <ion-segment-button value="completed">
+        Completed
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  
+  <div [ngSwitch]="ordersSegment">
+    <ion-list *ngSwitchCase="'open'">
+        <ion-item>
+          <h2>Finn</h2>
+          <h3>Don't Know What To Do!</h3>
+          <p text-wrap>I've had a pretty messed up day. If we just...</p>
+          <button ion-button clear item-end>
+            View<br>
+            View
+          </button>
+        </ion-item>
+    </ion-list>
+  
+    <ion-list *ngSwitchCase="'completed'">
+      
+    </ion-list>
+  </div>
 </ion-content>

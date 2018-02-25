@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { Order } from '../../providers/types';
 /**
  * Generated class for the OrdersPage page.
  *
@@ -15,10 +15,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class OrdersPage {
 
+  ordersSegment: string = 'open';
+  openOrders:[Order];
+
   public tabComponent: string = 'ExchangeTabsPage';
   public component: string = 'ExchangeTabsPage';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams
+  ) {
   }
 
   ionViewDidLoad() {

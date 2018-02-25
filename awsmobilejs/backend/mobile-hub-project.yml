@@ -69,6 +69,39 @@ features:
             tablePrivacy: public
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
+              closeDate: N
+              commission: N
+              id: S
+              market: S
+              openDate: N
+              price: N
+              quantity: N
+              subtotal: N
+              timeInForce: S
+              total: N
+              type: S
+              unitsFilled: N
+            hashKeyName: id
+            hashKeyType: S
+            indexes:
+              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
+                hashKeyName: market
+                hashKeyType: S
+                indexName: CloseDateSorted
+                rangeKeyName: closeDate
+                rangeKeyType: N
+              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
+                hashKeyName: market
+                hashKeyType: S
+                indexName: OpenDateSorted
+                rangeKeyName: openDate
+                rangeKeyType: N
+            rangeKeyName: market
+            rangeKeyType: S
+            tableName: ___DYNAMIC_PREFIX___-orders
+            tablePrivacy: public
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
               email: S
               personId: S
               personName: S
