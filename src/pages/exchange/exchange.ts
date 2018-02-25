@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Auth, Logger } from 'aws-amplify';
 const aws_exports = require('../../aws-exports').default;
 import { DynamoDB } from '../../providers/providers';
+import { OrdersProvider } from '../../providers/orders/orders';
+import { WalletsProvider } from '../../providers/wallets/wallets';
 
 /**
  * Generated class for the ExchangePage page.
@@ -29,7 +31,9 @@ export class ExchangePage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public db: DynamoDB
+    public db: DynamoDB,
+    public orders: OrdersProvider,
+    public wallets: WalletsProvider
   ) {
     Auth.currentCredentials()
       .then(credentials => {

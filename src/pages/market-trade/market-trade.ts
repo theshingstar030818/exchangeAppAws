@@ -23,27 +23,29 @@ export class MarketTradePage {
   sellOrder: Order = {
     id: '',
     type: 'Limit Sell',
-    market: '',
+    marketId: '',
     timeInForce: 'Good Til Cancelled (Default)',
     quantity: 0.00000000,
     price: 0.00000000,
     subtotal: 0.00000000,
     commission: 0.00000000,
     total: 0.00000000,
-    openDate: new Date()
+    openDate: new Date(),
+    userId: ''
   };
 
   buyOrder: Order = {
     id: '',
     type: 'Limit Buy',
-    market: '',
+    marketId: '',
     timeInForce: 'Good Til Cancelled (Default)',
     quantity: 0.00000000,
     price: 0.00000000,
     subtotal: 0.00000000,
     commission: 0.00000000,
     total: 0.00000000,
-    openDate: new Date()
+    openDate: new Date(),
+    userId: ''
   };
 
   currOrder: Order;

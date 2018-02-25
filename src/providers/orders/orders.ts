@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Auth, Logger } from 'aws-amplify';
 const aws_exports = require('../../aws-exports').default;
 import { DynamoDB } from '../../providers/providers';
+import { Order } from '../types';
 
 /*
   Generated class for the OrdersProvider provider.
@@ -16,7 +17,7 @@ const logger = new Logger('OrdersProvider');
 @Injectable()
 export class OrdersProvider {
   
-  public orders;
+  public orders: [Order];
   private userId: string;
   private ordersTable: string = aws_exports.aws_resource_name_prefix + '-orders';
 
@@ -28,14 +29,13 @@ export class OrdersProvider {
     Auth.currentCredentials()
       .then(credentials => {
         this.userId = credentials.identityId;
-        
+        this.refreshOrders();
       }).catch(err => logger.debug('get current credentials err', err));
   }
 
-  refreshMarkets() {
+  refreshOrders() {
     const params = {
       'TableName': this.ordersTable,
-      'IndexName': 'OpenDateSorted',
       'KeyConditionExpression': "#userId = :userId",
       'ExpressionAttributeNames': { '#userId': 'userId' },
       'ExpressionAttributeValues': { ':userId': this.userId },
@@ -46,7 +46,7 @@ export class OrdersProvider {
       .then(data => { 
         console.log('orders fetched');
         console.log(data);
-        this.orders = data.Items; 
+        this.orders = data.Items;
       })
       .catch(err => logger.debug('error in refresh tasks', err));
   }

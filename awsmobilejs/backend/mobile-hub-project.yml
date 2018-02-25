@@ -68,46 +68,6 @@ features:
             tablePrivacy: public
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
-              closeDate: N
-              commission: N
-              id: S
-              market: S
-              openDate: N
-              price: N
-              quantity: N
-              subtotal: N
-              timeInForce: S
-              total: N
-              type: S
-              unitsFilled: N
-              userId: S
-            hashKeyName: id
-            hashKeyType: S
-            indexes:
-              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
-                hashKeyName: market
-                hashKeyType: S
-                indexName: CloseDateSorted
-                rangeKeyName: closeDate
-                rangeKeyType: N
-              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
-                hashKeyName: market
-                hashKeyType: S
-                indexName: OpenDateSorted
-                rangeKeyName: openDate
-                rangeKeyType: N
-              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
-                hashKeyName: market
-                hashKeyType: S
-                indexName: UserSorted
-                rangeKeyName: userId
-                rangeKeyType: S
-            rangeKeyName: market
-            rangeKeyType: S
-            tableName: ___DYNAMIC_PREFIX___-orders
-            tablePrivacy: public
-          - !com.amazonaws.mobilehub.v0.NoSQLTable 
-            attributes:
               added: N
               availableBalance: N
               change: N
@@ -133,6 +93,34 @@ features:
             rangeKeyName: userId
             rangeKeyType: S
             tableName: ___DYNAMIC_PREFIX___-wallets
+            tablePrivacy: public
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              closeDate: N
+              commission: N
+              id: S
+              marketId: S
+              openDate: N
+              price: N
+              quantity: N
+              subtotal: N
+              timeInForce: S
+              total: N
+              type: S
+              unitsFilled: N
+              userId: S
+            hashKeyName: userId
+            hashKeyType: S
+            indexes:
+              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
+                hashKeyName: userId
+                hashKeyType: S
+                indexName: OpenDateSorted
+                rangeKeyName: openDate
+                rangeKeyType: N
+            rangeKeyName: marketId
+            rangeKeyType: S
+            tableName: ___DYNAMIC_PREFIX___-orders
             tablePrivacy: public
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
