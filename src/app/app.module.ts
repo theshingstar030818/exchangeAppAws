@@ -16,6 +16,8 @@ import { DynamoDB } from '../providers/aws.dynamodb';
 import Amplify from 'aws-amplify';
 import { CoinMarketCapProvider } from '../providers/coin-market-cap/coin-market-cap';
 import { CoinIconsProvider } from '../providers/coin-icons/coin-icons';
+import { OrdersProvider } from '../providers/orders/orders';
+import { WalletsProvider } from '../providers/wallets/wallets';
 const aws_exports = require('../aws-exports').default;
 
 Amplify.configure(aws_exports);
@@ -42,7 +44,9 @@ Amplify.configure(aws_exports);
     Camera,
     DynamoDB,
     CoinMarketCapProvider,
-    CoinIconsProvider
+    CoinIconsProvider,
+    OrdersProvider,
+    WalletsProvider
   ]
 })
 export class AppModule {}

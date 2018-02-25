@@ -46,4 +46,5 @@ export type Order = {
     openDate: Date,
     closeDate?: Date
     unitsFilled?: number
+    userId?: string
 }

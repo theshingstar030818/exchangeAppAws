@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Auth, Logger } from 'aws-amplify';
+const aws_exports = require('../../aws-exports').default;
+import { DynamoDB } from '../../providers/providers';
 
 /**
  * Generated class for the ExchangePage page.
@@ -8,6 +11,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
+ const logger = new Logger('Tasks');
+
 @IonicPage()
 @Component({
   selector: 'page-exchange',
@@ -15,44 +20,39 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ExchangePage {
   
-  banner = [{},{},{}];
-  markets = [{
-    ask: '100044.08',
-    bid: '100043.01',
-    change: 0.2,
-    created: 1519274199513,
-    high24hr: '103043.78',
-    icon: 'https://www.cryptocompare.com/media/19633/btc.png',
-    isActive: true,
-    lastPrice: 100043.78,
-    low24hr: '94043.82',
-    nameCode: 'BTC',
-    primaryCurrency: 'BTC',
-    secondaryCurrency: 'PKR',
-    spread: '',
-    volume: 134.958,
-    name: 'Bitcoin', 
-    marketId: 'PKR-BTC'
-  },{
-    ask: '44.50',
-    bid: '43.30',
-    change: 0.2,
-    created: 1519274199513,
-    high24hr: '55.22',
-    icon: 'https://www.cryptocompare.com/media/12318177/ada.png',
-    isActive: true,
-    lastPrice: 43.78,
-    low24hr: '35.69',
-    nameCode: 'ADA',
-    primaryCurrency: 'ADA',
-    secondaryCurrency: 'PKR',
-    spread: '',
-    volume: 2242.900,
-    name: 'Cardano', 
-    marketId: 'PKR-ADA'
-  }];
+  // banner = [{},{},{}];
+  markets = [];
+  private userId: string;
+  public refresher: any;
+  private marketsTable: string = aws_exports.aws_resource_name_prefix + '-markets';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public db: DynamoDB
+  ) {
+    Auth.currentCredentials()
+      .then(credentials => {
+        this.userId = credentials.identityId;
+        this.refreshMarkets();
+      })
+      .catch(err => logger.debug('get current credentials err', err));
+  }
+
+  refreshData(refresher) {
+    this.refresher = refresher;
+    this.refreshMarkets()
+  }
+
+  refreshMarkets() {
+    const params = {
+      'TableName': this.marketsTable,
+    };
+    this.db.getDocumentClient()
+      .then(client => client.scan(params).promise())
+      .then(data => { this.markets = data.Items; })
+      .catch(err => logger.debug('error in refresh tasks', err))
+      .then(() => { this.refresher && this.refresher.complete() });
   }
 
   ionViewDidLoad() {

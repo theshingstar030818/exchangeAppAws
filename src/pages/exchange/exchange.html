@@ -20,7 +20,15 @@
 
 
 <ion-content>
-  <ion-card>  
+  <ion-refresher (ionRefresh)="refreshData($event)">
+    <ion-refresher-content
+                  pullingIcon="arrow-dropdown"
+                  pullingText="Pull to refresh"
+                  refreshingSpinner="circles"
+                  refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <!-- <ion-card>  
     <ion-card-content>
       <ion-slides [autoplay]=2000 [loop]=true >
         <ion-slide>
@@ -58,7 +66,7 @@
         </ion-slide>
       </ion-slides>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 
   <ion-card>
 
@@ -87,7 +95,7 @@
           <ion-grid>
             <ion-row>
               <ion-col>
-                <p>{{market.name}}</p>
+                <p>{{market.marketId}}</p>
               </ion-col>
               <ion-col>
                 <p>{{market.volume}}</p>

@@ -21,6 +21,7 @@ export class MarketTradePage {
   lineChart: any;
   
   sellOrder: Order = {
+    id: '',
     type: 'Limit Sell',
     market: '',
     timeInForce: 'Good Til Cancelled (Default)',
@@ -28,10 +29,12 @@ export class MarketTradePage {
     price: 0.00000000,
     subtotal: 0.00000000,
     commission: 0.00000000,
-    total: 0.00000000
+    total: 0.00000000,
+    openDate: new Date()
   };
 
   buyOrder: Order = {
+    id: '',
     type: 'Limit Buy',
     market: '',
     timeInForce: 'Good Til Cancelled (Default)',
@@ -39,7 +42,8 @@ export class MarketTradePage {
     price: 0.00000000,
     subtotal: 0.00000000,
     commission: 0.00000000,
-    total: 0.00000000
+    total: 0.00000000,
+    openDate: new Date()
   };
 
   currOrder: Order;

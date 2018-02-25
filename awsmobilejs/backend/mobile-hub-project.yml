@@ -43,7 +43,6 @@ features:
               low24hr: S
               marketId: S
               name: S
-              nameCode: S
               primaryCurrency: S
               secondaryCurrency: S
               spread: S
@@ -81,6 +80,7 @@ features:
               total: N
               type: S
               unitsFilled: N
+              userId: S
             hashKeyName: id
             hashKeyType: S
             indexes:
@@ -96,9 +96,43 @@ features:
                 indexName: OpenDateSorted
                 rangeKeyName: openDate
                 rangeKeyType: N
+              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
+                hashKeyName: market
+                hashKeyType: S
+                indexName: UserSorted
+                rangeKeyName: userId
+                rangeKeyType: S
             rangeKeyName: market
             rangeKeyType: S
             tableName: ___DYNAMIC_PREFIX___-orders
+            tablePrivacy: public
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              added: N
+              availableBalance: N
+              change: N
+              currency: S
+              depositAddress: S
+              id: S
+              pendingDeposit: N
+              reserved: N
+              symbol: S
+              total: N
+              type: S
+              underMaintanance: BOOL
+              userId: S
+            hashKeyName: id
+            hashKeyType: S
+            indexes:
+              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
+                hashKeyName: userId
+                hashKeyType: S
+                indexName: CurrencySorted
+                rangeKeyName: currency
+                rangeKeyType: S
+            rangeKeyName: userId
+            rangeKeyType: S
+            tableName: ___DYNAMIC_PREFIX___-wallets
             tablePrivacy: public
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
