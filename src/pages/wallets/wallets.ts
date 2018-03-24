@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { WalletsProvider } from '../../providers/wallets/wallets';
+import { OrdersProvider } from '../../providers/orders/orders';
 
 /**
  * Generated class for the WalletsPage page.
@@ -15,11 +17,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class WalletsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public wallets: WalletsProvider,
+    public orders: OrdersProvider
+  ) {
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WalletsPage');
+  }
+
+  fundPkrAccount(){
+    this.navCtrl.push('FundPkrAccountPage');
   }
 
 }

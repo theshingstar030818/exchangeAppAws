@@ -11,13 +11,13 @@
 	"FrontendLastBuildTime": "",
 	"LastPublishTime": "",
 	"BackendFormat": "yml",
-	"BackendLastSyncTime": "2018-02-24-23-12-00",
-	"BackendLastBuildTime": "2018-02-24-23-11-49",
-	"BackendLastPushTime": "2018-02-24-23-11-55",
+	"BackendLastSyncTime": "2018-02-25-00-12-49",
+	"BackendLastBuildTime": "2018-02-25-00-12-37",
+	"BackendLastPushTime": "2018-02-25-00-12-42",
 	"BackendLastPushSuccessful": true,
 	"BackendProjectID": "586fb998-15de-11e8-b983-1df4d428e0df",
 	"BackendProjectName": "exchangeApp-2018-02-19-20-35-28",
 	"BackendProjectConsoleUrl": "https://console.aws.amazon.com/mobilehub/home#/586fb998-15de-11e8-b983-1df4d428e0df/build",
 	"BackendProjectCreationTime": "2018-02-20T01:35:34.690Z",
-	"BackendProjectLastUpdatedTime": "2018-02-25T04:11:54.170Z"
+	"BackendProjectLastUpdatedTime": "2018-02-25T05:12:41.764Z"
 }

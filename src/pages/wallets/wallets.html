@@ -13,12 +13,43 @@
       Wallets 
     </ion-title>
     <ion-buttons end>
-      
+
     </ion-buttons>
   </ion-navbar>
+  <ion-list>
+    <ion-item>
+      <ion-icon item-start>
+        <img class="svgicon" src="assets/imgs/pk-flag-01.png">
+      </ion-icon>
+      <p>PKR 100,000.00</p>
+      <p>Pending Deposit: 0.00</p>
+      <p>Reserved: 0.00</p>
+      <button ion-button color="danger" item-end icon-only clear>
+        <ion-icon name="ios-remove-circle-outline" ></ion-icon>
+      </button>
+      <button (click)="fundPkrAccount()" ion-button color="secondary" item-end icon-only clear>
+        <ion-icon name="ios-add-circle-outline" ></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item>
+      <ion-icon item-start>
+        <img class="svgicon" src="https://www.cryptocompare.com/media/12318177/ada.png">
+      </ion-icon>
+      <p>ADA 0.000000ur</p>
+      <p>Pending Deposit: 0.00</p>
+      <p>Reserved: 0.00</p>
+      <button ion-button color="danger" item-end icon-only clear>
+        <ion-icon name="ios-remove-circle-outline" ></ion-icon>
+      </button>
+      <button ion-button color="secondary" item-end icon-only clear>
+        <ion-icon name="ios-add-circle-outline" ></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
 </ion-content>

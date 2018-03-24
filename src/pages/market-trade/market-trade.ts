@@ -63,8 +63,8 @@ export class MarketTradePage {
   ) {
     console.log(navParams.data);
     this.market = navParams.data;
-    this.buyOrder.market = this.market.marketId;
-    this.sellOrder.market = this.market.marketId;
+    this.buyOrder.marketId = this.market.marketId;
+    this.sellOrder.marketId = this.market.marketId;
   }
 
   ionViewDidLoad() {
@@ -111,7 +111,7 @@ export class MarketTradePage {
     let alert = this.alertCtrl.create({
       title: order.type,
       message: ` 
-      <h5>Market: `+order.market+`</h5>
+      <h5>Market: `+order.marketId+`</h5>
       <p><b>Time In Force:</b> `+order.timeInForce+`</p>
       <p><b>Quantity:</b> `+order.quantity+' '+this.market.primaryCurrency+`</p>
       <p><b>Price:</b> `+order.price+' '+this.market.secondaryCurrency+`</p>

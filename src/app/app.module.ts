@@ -18,6 +18,7 @@ import { CoinMarketCapProvider } from '../providers/coin-market-cap/coin-market-
 import { CoinIconsProvider } from '../providers/coin-icons/coin-icons';
 import { OrdersProvider } from '../providers/orders/orders';
 import { WalletsProvider } from '../providers/wallets/wallets';
+import { FinjaProvider } from '../providers/finja/finja';
 const aws_exports = require('../aws-exports').default;
 
 Amplify.configure(aws_exports);
@@ -46,7 +47,8 @@ Amplify.configure(aws_exports);
     CoinMarketCapProvider,
     CoinIconsProvider,
     OrdersProvider,
-    WalletsProvider
+    WalletsProvider,
+    FinjaProvider
   ]
 })
 export class AppModule {}

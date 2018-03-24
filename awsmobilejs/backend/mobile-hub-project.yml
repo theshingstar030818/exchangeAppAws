@@ -68,34 +68,6 @@ features:
             tablePrivacy: public
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
-              added: N
-              availableBalance: N
-              change: N
-              currency: S
-              depositAddress: S
-              id: S
-              pendingDeposit: N
-              reserved: N
-              symbol: S
-              total: N
-              type: S
-              underMaintanance: BOOL
-              userId: S
-            hashKeyName: id
-            hashKeyType: S
-            indexes:
-              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
-                hashKeyName: userId
-                hashKeyType: S
-                indexName: CurrencySorted
-                rangeKeyName: currency
-                rangeKeyType: S
-            rangeKeyName: userId
-            rangeKeyType: S
-            tableName: ___DYNAMIC_PREFIX___-wallets
-            tablePrivacy: public
-          - !com.amazonaws.mobilehub.v0.NoSQLTable 
-            attributes:
               closeDate: N
               commission: N
               id: S
@@ -103,6 +75,7 @@ features:
               openDate: N
               price: N
               quantity: N
+              status: S
               subtotal: N
               timeInForce: S
               total: N
@@ -118,9 +91,35 @@ features:
                 indexName: OpenDateSorted
                 rangeKeyName: openDate
                 rangeKeyType: N
+              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
+                hashKeyName: userId
+                hashKeyType: S
+                indexName: StatusSorted
+                rangeKeyName: status
+                rangeKeyType: S
             rangeKeyName: marketId
             rangeKeyType: S
             tableName: ___DYNAMIC_PREFIX___-orders
+            tablePrivacy: public
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              availableBalance: N
+              change: N
+              currency: S
+              depositAddress: S
+              id: S
+              pendingDeposit: N
+              reserved: S
+              symbol: S
+              total: N
+              type: S
+              underMaintanance: BOOL
+              userId: S
+            hashKeyName: userId
+            hashKeyType: S
+            rangeKeyName: currency
+            rangeKeyType: S
+            tableName: ___DYNAMIC_PREFIX___-wallets
             tablePrivacy: public
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
